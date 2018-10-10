@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="lan"/>
+<title>登录-login</title>
+<link href="images/login.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div id="wrap">
+	<div id="header"> </div>
+    <div id="content-wrap">
+    	<div class="space"> </div>
+   	  <form onsubmit="return doLogin();"><div class="content">
+        <div class="field"><label>账　户：</label><input class="username" name="userName" value="lan" type="text" /></div>
+		<div class="field"><label>密　码：</label><input class="password" name="password" value="lan" type="password" /><br /></div>
+        <div class="btn"><input type="submit" value="" class="login-btn" /></div>
+        <div class="field" id="tips" style="color:#ff5b04; text-align: center;"></div>
+      </div></form>
+    </div>
+    <div id="footer"> </div>
+</div>
+<script type="text/javascript" src="javascript/jquery.min.js"></script>
+<script type="text/javascript">
+	function doLogin(){
+		$("#tips").html("");
+		var userName = $("form input[name=userName]").val();
+		var password = $("form input[name=password]").val();
+		$.ajax({
+			url:"/framework/login",
+			type:"post",
+			data:{
+				userName:userName,
+				password:password
+			},
+			success:function(res){
+				if(res.success){
+					window.location.href="/index.html";
+				}else{
+					$("#tips").html(res.message);
+				}
+			}
+		});
+		return false;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="order by dede58.com"/>
+<title>无标题文档</title>
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	background:#FFF
+}
+</style>
+</head>
+
+<body>
+<div id="contentWrap">
+<div class="pageTitle"></div>
+<div class="pageColumn">
+<div class="pageButton">
+	
+</div>
+  <table>
+    <thead>
+    <th width="25"><input name="" type="checkbox" value="" /></th>
+    <th width="25">序号</th>
+      <th>任务名称</th>
+      <th>开始时间</th>
+      <th>结束时间</th>
+      <th>失败时间</th>
+      <th>成功时间</th>
+      <th>耗时</th>
+      <th>返回结果</th>
+      <th>创建时间</th>
+    </thead>
+    <tbody id="grid_table">
+      
+    </tbody>
+  </table>
+</div></div>
+
+
+<script type="text/html" id="list_tpl">
+	{@each d.data as item,index}
+      <tr {@if index%2==1}class="trLight"{@/if}>
+        <td class="checkBox"><input name="" type="checkbox" value=""/></td>
+        <td class="checkBox">${gridIndex(index,d)}</td>
+        <td>${item.jobName}</td>
+        <td>${item.startTime | dateFormat}</td>
+        <td>${item.endTime | dateFormat}</td>
+        <td>${item.failTime | dateFormat}</td>
+		<td>${item.successTime | dateFormat}</td>
+		<td>${spendSeconds(item)}</td>
+		<td>${item.remark}</td>
+		<td>${item.createTime | dateFormat}</td>
+      </tr>
+	{@/each}
+	<tr class="page-toolbar">
+		<td colspan="20">
+		{@if !d.firstPage}
+			<a href="javascript:void(0);" data-page="${d.prePage}">上一页</a>
+			<a href="javascript:void(0);" data-page="1">1</a>
+		{@/if}
+		{@if d.page>3}<span>...</span>{@/if}
+		{@if d.page>2}<a href="javascript:void(0);" data-page="${d.prePage}">${d.prePage}</a>{@/if}
+		<span class="current">${d.page}</span>
+		{@if (d.totalPage-d.page>1)}<a href="javascript:void(0);" data-page="${d.nextPage}">${d.nextPage}</a>{@/if}
+		{@if (d.totalPage-d.page>2)}<span>...</span>{@/if}
+		{@if !d.lastPage}
+		<a href="javascript:void(0);" data-page="${d.totalPage}">${d.totalPage}</a>
+		<a href="javascript:void(0);" data-page="${d.nextPage}">下一页</a>
+		{@/if}
+		</td>
+	</tr>
+</script>
+<script type="text/javascript" src="javascript/jquery.min.js"></script>
+<script type="text/javascript" src="javascript/layer-v3.1.1/layer.js"></script>
+<script type="text/javascript" src="javascript/juicer-min.js"></script>
+<script type="text/javascript" src="javascript/juicerHelper.js"></script>
+<script type="text/javascript" src="javascript/cronValidate.js"></script>
+<script type="text/javascript" src="javascript/history.js"></script>
+</body>
+</html>

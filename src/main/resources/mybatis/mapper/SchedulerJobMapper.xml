@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lan.task.framework.mapper.SchedulerJobMapper" >
+  <resultMap id="BaseResultMap" type="com.lan.task.framework.model.SchedulerJob" >
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_group" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="cron" property="cron" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="last_start_time" property="lastStartTime" jdbcType="TIMESTAMP" />
+    <result column="last_end_time" property="lastEndTime" jdbcType="TIMESTAMP" />
+    <result column="run_count" property="runCount" jdbcType="INTEGER" />
+    <result column="error_count" property="errorCount" jdbcType="INTEGER" />
+    <result column="last_error_time" property="lastErrorTime" jdbcType="TIMESTAMP" />
+    <result column="next_run_time" property="nextRunTime" jdbcType="TIMESTAMP" />
+    <result column="parameter" property="parameter" jdbcType="VARCHAR" />
+    <result column="job_status" property="jobStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    job_id, job_name, job_group, cron, class_name, create_time, update_time, description, 
+    last_start_time, last_end_time, run_count, error_count, last_error_time, next_run_time, 
+    parameter, job_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_scheduler_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_scheduler_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lan.task.framework.model.SchedulerJob" >
+    insert into t_scheduler_job (job_id, job_name, job_group, 
+      cron, class_name, create_time, 
+      update_time, description, last_start_time, 
+      last_end_time, run_count, error_count, 
+      last_error_time, next_run_time, parameter, 
+      job_status)
+    values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobGroup,jdbcType=VARCHAR}, 
+      #{cron,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{lastStartTime,jdbcType=TIMESTAMP}, 
+      #{lastEndTime,jdbcType=TIMESTAMP}, #{runCount,jdbcType=INTEGER}, #{errorCount,jdbcType=INTEGER}, 
+      #{lastErrorTime,jdbcType=TIMESTAMP}, #{nextRunTime,jdbcType=TIMESTAMP}, #{parameter,jdbcType=VARCHAR}, 
+      #{jobStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lan.task.framework.model.SchedulerJob" >
+    insert into t_scheduler_job
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="jobGroup != null" >
+        job_group,
+      </if>
+      <if test="cron != null" >
+        cron,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="lastStartTime != null" >
+        last_start_time,
+      </if>
+      <if test="lastEndTime != null" >
+        last_end_time,
+      </if>
+      <if test="runCount != null" >
+        run_count,
+      </if>
+      <if test="errorCount != null" >
+        error_count,
+      </if>
+      <if test="lastErrorTime != null" >
+        last_error_time,
+      </if>
+      <if test="nextRunTime != null" >
+        next_run_time,
+      </if>
+      <if test="parameter != null" >
+        parameter,
+      </if>
+      <if test="jobStatus != null" >
+        job_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null" >
+        #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastStartTime != null" >
+        #{lastStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEndTime != null" >
+        #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runCount != null" >
+        #{runCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorCount != null" >
+        #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="lastErrorTime != null" >
+        #{lastErrorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextRunTime != null" >
+        #{nextRunTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parameter != null" >
+        #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        #{jobStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lan.task.framework.model.SchedulerJob" >
+    update t_scheduler_job
+    <set >
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        job_group = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="cron != null" >
+        cron = #{cron,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastStartTime != null" >
+        last_start_time = #{lastStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEndTime != null" >
+        last_end_time = #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runCount != null" >
+        run_count = #{runCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorCount != null" >
+        error_count = #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="lastErrorTime != null" >
+        last_error_time = #{lastErrorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextRunTime != null" >
+        next_run_time = #{nextRunTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parameter != null" >
+        parameter = #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        job_status = #{jobStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lan.task.framework.model.SchedulerJob" >
+    update t_scheduler_job
+    set job_name = #{jobName,jdbcType=VARCHAR},
+      job_group = #{jobGroup,jdbcType=VARCHAR},
+      cron = #{cron,jdbcType=VARCHAR},
+      class_name = #{className,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      last_start_time = #{lastStartTime,jdbcType=TIMESTAMP},
+      last_end_time = #{lastEndTime,jdbcType=TIMESTAMP},
+      run_count = #{runCount,jdbcType=INTEGER},
+      error_count = #{errorCount,jdbcType=INTEGER},
+      last_error_time = #{lastErrorTime,jdbcType=TIMESTAMP},
+      next_run_time = #{nextRunTime,jdbcType=TIMESTAMP},
+      parameter = #{parameter,jdbcType=VARCHAR},
+      job_status = #{jobStatus,jdbcType=VARCHAR}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <!-- ************************************************************************************************************** -->
+  <update id="beforeRun">
+  	update t_scheduler_job
+    set 
+      update_time = now(),
+      last_start_time = now(),
+      last_end_time = null,
+      run_count = run_count+1,
+      next_run_time = #{nextRunTime,jdbcType=TIMESTAMP}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="afterRun">
+  	update t_scheduler_job
+    set 
+      update_time = now(),
+      last_end_time = now()
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="afterError">
+  	update t_scheduler_job
+    set 
+      update_time = now(),
+      last_end_time = now(),
+      error_count = error_count+1,
+      last_error_time = now()
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getByNameAndGroup" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>
+  	FROM t_scheduler_job
+  	WHERE job_name = #{jobName}
+  	and job_group = #{jobGroup}
+  </select>
+
+	<update id="createTableIfNotExist">
+		CREATE TABLE IF NOT EXISTS `t_scheduler_job` (
+		`job_id` int(11) NOT NULL AUTO_INCREMENT,
+		`job_name` varchar(100) DEFAULT NULL,
+		`job_group` varchar(100) DEFAULT NULL,
+		`cron` varchar(100) DEFAULT NULL,
+		`class_name` varchar(100) DEFAULT NULL,
+		`create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+		`update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+		`description` varchar(255) DEFAULT NULL,
+		`last_start_time` datetime DEFAULT NULL,
+		`last_end_time` datetime DEFAULT NULL,
+		`run_count` int(11) DEFAULT NULL,
+		`error_count` int(11) DEFAULT NULL,
+		`last_error_time` datetime DEFAULT NULL,
+		`next_run_time` datetime DEFAULT NULL,
+		`parameter` varchar(255) DEFAULT NULL,
+		`job_status` varchar(10) DEFAULT NULL,
+		PRIMARY KEY (`job_id`)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	</update>
+	
+	<select id="findByStatus" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+		from t_scheduler_job
+		<if test="jobStatus != null">
+			where job_status in 
+			<foreach collection="jobStatus" open="(" item="item" separator="," index="index" close=")">
+				${item}
+			</foreach>
+		</if>
+		order by job_id desc
+	</select>
+</mapper>

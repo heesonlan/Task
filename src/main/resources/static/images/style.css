@@ -1,0 +1,104 @@
+﻿/*dede58.com 做最好的织梦整站模板下载网站*/
+/*@import "menu.css";*/
+/** 清除内外边距  */
+body, h1, h2, h3, h4, h5, h6, hr, p,
+blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td, /* table elements 表格元素 */
+img/* img elements 图片元素 */{
+border:medium none;
+margin: 0;
+padding: 0;
+}
+/** 设置默认字体 **/
+body,button, input, select, textarea {
+font: 12px/1.5 '宋体',tahoma, Srial, helvetica, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+em{font-style:normal;}
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+/** 重置超链接元素 **/
+a { text-decoration: none;}
+a:hover { text-decoration: underline; color:#3363a7; }
+/** 重置图片元素 **/
+img{ border:0px;}
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*清除浮动*/
+.clear{
+	height:0px;
+	line-height:0px;
+	font-size:0px;
+	clear:both;
+	}
+.fleft{ float:left}
+.fright{ float:right}
+#wrap{ width:100%;}
+#header{ height:78px; background:url(index-header-bg.gif) repeat-x;}
+.logo{ width:362px; height:51px; background:url(index-logo.gif);}
+.logout{ width:23px; height:24px; background:url(index-logout.png); margin-top:14px;}
+.nav ul{ height:51px; overflow:hidden;}
+.nav li{ float:left; margin-top:16px; width:93px; height:35px; background:url(index-nav-bg.png) no-repeat center -16px; text-align:center; line-height: 40px;}
+.nav li a{ color:#effaff;}
+.nav li a:HOVER{ text-decoration: none;}
+.nav .first{ background:url(index-nav-firstbg.png) no-repeat center -16px;}
+.nav li.selected{background-position:0 -68px;}
+.nav li:hover{ background-position:0 -68px;}
+.nav .first:hover{ background-position:0 -68px;}
+
+.nav ul .nav-left{ width:34px; height:51px; margin-top:0px; background:url(index-nav-left.png);}
+.nav ul .nav-right{ width:34px; height:51px; margin-top:0px; background:url(index-nav-right.png);}
+.subnav{ height:27px; background:url(index-subnav-bg.gif)}
+.subnav .subnavLeft{ width:17px; height:27px; background:url(index-subnav-left.gif)}
+.subnav .subnavRight{ width:17px; height:27px; background:url(index-subnav-right.gif)}
+.menu{ width:168px; height:495px; background:#e6f4fa; color:#075587; margin-left:5px;}
+.menu ul{ width:168px;}
+.menu ul li{ width:168px; background:url(index-menu-bg.gif) no-repeat; text-align:left;}
+.menu ul li a{ height:26px; line-height:26px; color:#075587; padding-left:35px;}
+.menu ul li a:hover{ height:26px; line-height:26px; color:#075587; text-decoration:none; margin-left:10px;}
+.menu .subMenuTitle{ background:url(index-menu-title.gif); text-align:center; height:27px; line-height:26px; color:#fff}
+.menu ul li ul{ width:168px;}
+.menu ul li ul li{ background:url(index-submenu-bg.gif) no-repeat left center;}
+.menu ul li ul li a{padding-left:65px;}
+
+
+
+.sidebar{ width:5px; height:500px;}
+.sidebar .btn{ width:5px; height:39px; background:url(sidebar-on.gif); margin-top:200px;}
+.sidebar .btn:hover{ background-position:0 -39px;}
+.page{ width:100%; height:500px; background:#198bc9}
+.page iframe{ margin:0 auto;}
+#content .space{ height:5px; font-size:0px; background:#198bc9}
+#footer{ width:100%; height:26px; line-height:26px; background:url(index-footer-bg.gif);}
+
+
+.pageTitle{ height:27px; line-height:27px; color:#075587; background:url(page-pageTitle-bg.gif); }
+.pageTitle span{ margin-left:10px;}
+.pageButton{ height:50px; padding-left:12px;}
+.pageButton a{line-height: 45px; background-color:#68c4f1; padding:8px 12px; border-radius:4px; color: #ffffff;}
+
+.pageColumn{ background:url(page-bg.gif) repeat-x; padding:5px;}
+.pageColumn table{ width:100%}
+.pageColumn thead{ border:1px solid #bfd8e0; color:#075587; background:url(page-thead-bg.gif);}
+.pageColumn thead th{ border-left:1px solid #c5dbe2; text-align:center; height:28px;}
+.pageColumn tbody tr{ border:1px solid #bfd8e0; height:28px;}
+.pageColumn tbody .trLight{ background:#f9fcfd}
+.pageColumn tbody .checkBox{ background:#f1f7f9; border:1px solid #bfd8e0; text-align:center}
+.pageColumn tbody td{ text-align:center;}
+/* .pageColumn */
+.pageColumn tbody .page-toolbar{border: none; height: 60px;}
+.page-toolbar a{background-color:#e8ebf0; color:#a0adc0; padding:5px 10px;}
+.page-toolbar a:HOVER{background-color:#1e90ce; color:#ffffff;}
+.page-toolbar span{padding:0 5px;}
+.page-toolbar span.current{background-color:#1e90ce; color:#ffffff; padding:5px 10px;}
+
+.task-form{	padding: 20px 50px;}
+.task-form .form-group{margin-top: 8px;}
+.task-form .form-group label{display:inline-block; width: 50px; vertical-align: top; text-align: right;}
+.task-form .form-group input{border: 1px solid #bfd8e0; border-radius:3px; width:300px;}
+.task-form .form-group textarea{border: 1px solid #bfd8e0; border-radius:3px; width:300px;}
+.task-form .form-group.button{text-align: center;}
+.task-form .form-group button{padding:5px 20px; border-radius:5px; background-color: #68c4f1; color: #ffffff;}

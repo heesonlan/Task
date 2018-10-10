@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lan.task.framework.mapper.SchedulerJobLogMapper" >
+  <resultMap id="BaseResultMap" type="com.lan.task.framework.model.SchedulerJobLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="fail_time" property="failTime" jdbcType="TIMESTAMP" />
+    <result column="success_time" property="successTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_id, job_name, start_time, end_time, fail_time, success_time, create_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_scheduler_job_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_scheduler_job_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lan.task.framework.model.SchedulerJobLog" >
+    insert into t_scheduler_job_log (id, job_id, job_name, 
+      start_time, end_time, fail_time, 
+      success_time, create_time, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{failTime,jdbcType=TIMESTAMP}, 
+      #{successTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lan.task.framework.model.SchedulerJobLog" >
+    insert into t_scheduler_job_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="failTime != null" >
+        fail_time,
+      </if>
+      <if test="successTime != null" >
+        success_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failTime != null" >
+        #{failTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="successTime != null" >
+        #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lan.task.framework.model.SchedulerJobLog" >
+    update t_scheduler_job_log
+    <set >
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failTime != null" >
+        fail_time = #{failTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="successTime != null" >
+        success_time = #{successTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lan.task.framework.model.SchedulerJobLog" >
+    update t_scheduler_job_log
+    set job_id = #{jobId,jdbcType=INTEGER},
+      job_name = #{jobName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      fail_time = #{failTime,jdbcType=TIMESTAMP},
+      success_time = #{successTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- ****************************************************************************************************************** -->
+	<update id="createTableIfNotExist">
+		CREATE TABLE IF NOT EXISTS `t_scheduler_job_log` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`job_id` int(11) DEFAULT NULL,
+		`job_name` varchar(100) DEFAULT NULL,
+		`start_time` datetime DEFAULT NULL,
+		`end_time` datetime DEFAULT NULL,
+		`fail_time` datetime DEFAULT NULL,
+		`success_time` datetime DEFAULT NULL,
+		`create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+		`remark` varchar(255) DEFAULT NULL,
+		PRIMARY KEY (`id`)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	</update>
+	
+	<select id="findAllHistoryPage" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+		from t_scheduler_job_log 
+		where 1=1
+		<if test="jobId!=null and jobId>0">
+			and job_id=#{jobId}
+		</if>
+		<if test="type=='ALL'"></if>
+		<if test="type=='ERROR'">
+			and fail_time is not null
+		</if>
+		<if test="type=='SUCCESS'">
+			and success_time is not null
+		</if>
+		order by id desc
+	</select>
+</mapper>

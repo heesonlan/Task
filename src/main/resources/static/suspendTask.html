@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="order by dede58.com"/>
+<title>无标题文档</title>
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	background:#FFF
+}
+</style>
+</head>
+
+<body>
+<div id="contentWrap">
+<div class="pageTitle"></div>
+<div class="pageColumn">
+<div class="pageButton">
+	
+</div>
+  <table>
+    <thead>
+    <th width="25"><input name="" type="checkbox" value="" /></th>
+    <th width="25">序号</th>
+      <th>名称</th>
+      <th>类名</th>
+      <th>cron</th>
+      <th>lastStartTime</th>
+      <th>lastEndTime</th>
+      <th>runCount</th>
+      <th>lastErrorTime</th>
+      <th>errorCount</th>
+      <th>操作</th>
+    </thead>
+    <tbody id="grid_table">
+      
+    </tbody>
+  </table>
+</div></div>
+
+<script type="text/html" id="list_tpl">
+	{@each d.data as item,index}
+      <tr {@if index%2==1}class="trLight"{@/if}>
+        <td class="checkBox"><input name="" type="checkbox" value=""/></td>
+        <td class="checkBox">${gridIndex(index,d)}</td>
+        <td>${item.jobName}</td>
+        <td>${item.className}</td>
+        <td>${item.cron}</td>
+		<td>${item.lastStartTime | dateFormat}</td>
+		<td>${item.lastEndTime | dateFormat}</td>
+		<td>${item.runCount}</td>
+		<td>${item.lastErrorTime | dateFormat}</td>
+		<td>${item.errorCount}</td>
+		<td data-id="${item.jobId}" data-status="${item.jobStatus}">
+			<a href="javascript:void(0);" class="action-update-cron">更新cron</a>
+			{@if item.jobStatus=="02"}
+			<a href="javascript:void(0);" class="action-change-status">使生效</a>
+			{@else if item.jobStatus=="01"}
+			<a href="javascript:void(0);" class="action-change-status">使失效</a>
+			{@/if}
+			<a href="/history-index.html?jobId=${item.jobId}" target="_blank">查看记录</a>
+			<a href="javascript:void(0);" class="action-del">删除</a>
+		</td>
+      </tr>
+	{@/each}
+	<tr class="page-toolbar">
+		<td colspan="20">
+		{@if !d.firstPage}
+			<a href="javascript:void(0);" data-page="${d.prePage}">上一页</a>
+			<a href="javascript:void(0);" data-page="1">1</a>
+		{@/if}
+		{@if d.page>3}<span>...</span>{@/if}
+		{@if d.page>2}<a href="javascript:void(0);" data-page="${d.prePage}">${d.prePage}</a>{@/if}
+		<span class="current">${d.page}</span>
+		{@if (d.totalPage-d.page>1)}<a href="javascript:void(0);" data-page="${d.nextPage}">${d.nextPage}</a>{@/if}
+		{@if (d.totalPage-d.page>2)}<span>...</span>{@/if}
+		{@if !d.lastPage}
+		<a href="javascript:void(0);" data-page="${d.totalPage}">${d.totalPage}</a>
+		<a href="javascript:void(0);" data-page="${d.nextPage}">下一页</a>
+		{@/if}
+		</td>
+	</tr>
+</script>
+<script type="text/javascript" src="javascript/jquery.min.js"></script>
+<script type="text/javascript" src="javascript/layer-v3.1.1/layer.js"></script>
+<script type="text/javascript" src="javascript/juicer-min.js"></script>
+<script type="text/javascript" src="javascript/juicerHelper.js"></script>
+<script type="text/javascript" src="javascript/cronValidate.js"></script>
+<script type="text/javascript" src="javascript/suspendTask.js"></script>
+</body>
+</html>
